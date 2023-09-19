@@ -33,7 +33,7 @@ class User {
       });
     }
     const updatedCart = {
-      items: updatedCartItems
+      items: [{productId: new ObjectId(product._id), quantity: 1 }]
     };
     const db = getDb();
     return db

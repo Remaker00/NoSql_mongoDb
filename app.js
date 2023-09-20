@@ -1,56 +1,40 @@
-const path = require('path');
-
 const express = require('express');
+const path = require('path');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-const errorController = require('./controllers/error');
-const User = require('./models/user');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
+app.use(bodyParser.json());
+app.use(express.static('frontend'));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+const userRoutes = require('./routes/user');
+const expenseRoutes = require('./routes/expense');
+const purchaseRoutes = require('./routes/purchase');
+const premiumRoutes = require('./routes/premium');
+const passwordRoutes = require('./routes/password')
+const resetpasswordRoutes = require('./routes/resetpassword')
 
-app.use((req, res, next) => {
-  User.findById('5bab316ce0a7c75f783cb8a8')
-    .then(user => {
-      req.user = user;
-      next();
-    })
-    .catch(err => console.log(err));
-});
+app.use('/user', userRoutes);
+app.use('/exp', expenseRoutes);
+app.use('/payment', purchaseRoutes);
+app.use('/premium', premiumRoutes);
+app.use('/password', passwordRoutes);
+app.use('/resetpassword', resetpasswordRoutes);
 
-app.use('/admin', adminRoutes);
-app.use(shopRoutes);
-
-app.use(errorController.get404);
 
 mongoose
   .connect(
     'mongodb+srv://nishant9:Nishant9@cluster0.lt3ez0q.mongodb.net/shop?retryWrites=true'
   )
-  .then(result => {
-    User.findOne().then(user => {
-      if (!user) {
-        const user = new User({
-          name: 'Nishant',
-          email: 'nishant@test.com',
-          cart: {
-            items: []
-          }
-        });
-        user.save();
-      }
+  .then(() => {
+    app.listen(3000, () => {
+      console.log('App started');
     });
-    app.listen(4000);
-  })
-  .catch(err => {
-    console.log(err);
+  }).catch((err) => {
+    console.error('Error connecting to MongoDB:', err);
   });

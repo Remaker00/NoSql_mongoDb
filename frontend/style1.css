@@ -1,0 +1,127 @@
+/* Reset some default browser styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color to the body */
+body {
+    background-color: #04040491;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #17db5b43;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Page title styles */
+h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #077dfb;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+#rzp-button1 {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button[type="submit"]:hover{
+    background-color: #0056b3;
+}
+#rzp-button1:hover  {
+    background-color: #000000;
+    color: #fff;
+}
+
+/* Expense list styles */
+#user-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+#user-list li {
+    background-color: #f9f9f9;
+    padding: 8px;
+}
+
+/* Premium section styles */
+#premium {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(26, 93, 238);
+}
+
+
+/* Footer paragraph styles */
+p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Adjust the gap as needed */
+    
+}
+
+.button-container button {
+    padding: 10px 20px;
+    /* Adjust the padding as needed */
+    background-color: #007bff;
+    /* Change the background color */
+    color: #fff;
+    /* Change the text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    /* Adjust the font size as needed */
+}
